@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+<h2>Update a match</h2>
+	
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_row(form.recap, {'required': false}) }}
+{{ form_end(form) }}
+	
+
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}

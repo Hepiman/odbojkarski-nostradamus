@@ -1,0 +1,18 @@
+{% if latestResults is defined %}
+<div class="widget-side">
+<h4>Zadnji rezultati</h4>
+<hr class="style-two">
+<table class="padding-3">
+	{% for game in latestResults %}
+	<tr>
+		<td class="align-right padding-3">{{ game.homeTeam.name }}</td>
+		<td><strong>{{ game.scoreHome }}</strong></td>
+		<td>:</td>
+		<td><strong>{{ game.scoreAway }}</strong></td>
+		<td class="align-left padding-3">{{ game.awayTeam.name }}</td>
+		<td><small><a href="http://www.odbojka.si" title="Več o tekmi {{game.homeTeam.name}}-{{game.awayTeam.name}}">več..</a></small></td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endif %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="jumbotron">
+	<h1>Hello.</h1>
+	This is Nostradamus!
+</div>
+	<table>
+	{% for team in teams %}
+	<tr>
+		<td>{{ team.name }}</td>
+		<td>{{ team.description }}</td>
+	</tr>
+	{% endfor %}
+	</table>
+	<br/>
+	{% render controller("FOSUserBundle:Security:login") %}
+	<br/>
+	{{ include('views/SubTemplates/test.html.twig') }}
+	
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}

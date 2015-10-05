@@ -1,0 +1,18 @@
+{% if nostradamuses is defined %}
+<div class="widget-side">
+<h4>Top nostradamusi</h4>
+<hr class="style-two">
+<table class="padding-5">
+	<tr>
+		<th>Nostradamus</th>
+		<th>Točke</th>
+	</tr>
+	{% for nostradamus in nostradamuses %}
+	<tr>
+		<td>{{nostradamus.user.username}}</td>
+		<td>{{nostradamus.score}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+

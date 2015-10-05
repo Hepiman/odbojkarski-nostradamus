@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<h2>League manager</h2>
+<h3>Add a league</h3>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+	
+{% if activeLeagues %}
+<h3>Active leagues</h3>
+<table>
+<tr><th>League name</th>
+<th>League desc</th>
+<th></th>
+<th></th>
+</tr>
+<tr>
+{% for league in activeLeagues %}
+<tr>
+<td>{{ league.name }}</td>
+<td>{{ league.description }}</td>
+<td><a href="/league/deactivate/{{ league.id }}" class="btn btn-default">Deaktiviraj</a></td>
+<td><a href="/league/remove/{{ league.id }}" class="btn btn-default">Odstrani</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if inactiveLeagues %}
+<h3>Inactive leagues</h3>
+<table>
+<tr><th>League name</th>
+<th>League desc</th>
+<th></th>
+<th></th>
+</tr>
+<tr>
+{% for league in inactiveLeagues %}
+<tr>
+<td>{{ league.name }}</td>
+<td>{{ league.description }}</td>
+<td><a href="/league/activate/{{ league.id }}" class="btn btn-default">Aktiviraj</a></td>
+<td><a href="/league/remove/{{ league.id }}" class="btn btn-default">Odstrani</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}

@@ -1,0 +1,22 @@
+{% if lestvica is defined %}
+<div class="widget-side">
+<h4>Lestvica {{ liga.name }}</h4>
+<hr class="style-two">
+<table class="padding-3">
+	<tr>
+		<th>Ekipa</th>
+		<th class="text-center">Zmage</th>
+		<th class="text-center">Porazi</th>
+		<th class="text-center">Točke</th>
+	</tr>
+	{% for team in lestvica %}
+	<tr>
+		<td>{{team.name}}</td>
+		<td class="text-center">{{team.wins}}</td>
+		<td class="text-center">{{team.losses}}</td>
+		<td class="text-center">{{team.points}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endif %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="si">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Dobrodošli{% endblock %} | Odbojkarski nostradamus</title>
+        {% block stylesheets %}
+        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        	<link rel="stylesheet" href="{{ asset('bundles/framework/css/style.css') }}" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />    
+    </head>
+    <body>
+    	<div class="container">
+    		<div id="header" clas="container-fluid">
+    			<div class="page-title">Odbojkarski nostradamus</div>
+				<nav class="navbar navbar-default">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Napovej <span class="sr-only">(current)</span></a></li>
+							<li><a href="#">Rezultati</a></li>
+							<li><a href="#">Lestvica</a></li>
+							<li class="dropdown">
+						</ul>
+						<!-- if signed in -->
+						<button type="button" class="btn btn-default navbar-btn navbar-right" style="margin-right: 5px">Vpiši se</button>
+						<!-- else 
+							<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+						-->
+					</div>
+				</nav>
+				</div>
+				<div class="row">
+					<div id="main" class="col-lg-8">
+						<h1 class="heading">{% block heading %}{% endblock %}</h1>
+						<hr class="style-two" />
+						{% block body %}{% endblock %}
+					</div>
+		        	<div id="side" class="col-md-4">
+		        		{% block sidebar %}sidebar{% endblock %}
+		        	</div>
+	        	</div>
+	        	{% block footerWidgets %}
+	        	{% endblock %}
+	        	<div class="row">
+	        		<div id="footer">
+	        			Nostradamus (C) 2015
+	        		</div>
+	        	</div>
+	        </div>
+        </div>
+        {% block javascripts %}
+       	 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        {% endblock %}
+    </body>
+</html>

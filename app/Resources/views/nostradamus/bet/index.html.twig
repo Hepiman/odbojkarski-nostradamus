@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Vnos napovedi
+{% endblock %}
+{% block heading %}
+Vnos napovedi
+{% endblock %}
+{% block body %}
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+		<strong>Zabeleženo!</strong> {{ flashMessage }}
+	</div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="alert alert-warning">
+		{{ flashMessage }}
+	</div>
+{% endfor %}
+<div class="text-center">
+<div class="center-block" style="width: 300px">
+	<form action="/bet/save/">
+		<table class="bet-table" style="width: 300px">
+			{% for game in games %}
+			<tr class="padded">
+				<td class="bet-left">
+					{{ game.homeTeam.name }}
+				</td> 
+				<td>
+					<input class="bet-number" type="number" min=0 max=3 value =
+					{% for bet in bets %}
+						{% if bet.game.id == game.id %}
+							{{ bet.betHome }}
+						{% endif %}
+					{% endfor %}
+				 	name="home{{ game.id }}">
+			 	</td>
+			 	<td><strong>:</strong></td>
+				<td>
+			 		<input class="bet-number" type="number" min=0 max=3 name="away{{ game.id }}" value=
+					{% for bet in bets %}
+						{% if bet.game.id == game.id %}
+							{{ bet.betAway }}
+						{% endif %}
+					{% endfor %}
+					>
+				</td>
+				<td class="bet-right">
+					{{ game.awayTeam.name }}
+				</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="3" class="text-center">
+						<small>{{ game.scheduled|date('d.m.Y H:i') }}</small>
+					</td>
+					<td></td>
+				</tr>			
+			{% endfor %}
+			<tr>
+				<td></td>
+				<td colspan="3" class="text-center">
+					<input class="btn btn-default" type="submit" value="Shrani">
+				</td>
+				<td></td>
+			</tr>
+		</table>
+		
+	</form>
+</div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+	{{ include('views/Widget/Side/latest_results.html.twig') }}
+	{{ include('views/Widget/Side/lestvica.html.twig') }}
+	{{ include('views/Widget/Side/top_nostradamus.html.twig') }}
+		
+{% endblock %}
+
+{% block footerWidgets %}
+	{{ include('views/SubTemplates/footer-widgets.html.twig') }}
+{% endblock %}

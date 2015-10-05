@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Team manager
+{% endblock %}
+{% block heading %}
+Team manager
+{% endblock %}
+{% block body %}
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<h2>Add a new team</h2>
+	
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+	
+	
+{% if teams %}
+	{% for league in leagues %}
+		<h3>{{league.name}}</h3>
+		<table class="padding-5">
+		{% for team in teams %}
+			{% if team.league.id == league.id %}
+			<tr>
+				<td>{{team.name}}</td>
+				<td>{{team.location}}</td>
+				<td><a href="/team/remove/{{team.id}}" class="btn btn-default">Odstrani</a></td>
+			</tr>
+			{% endif %}
+		{% endfor %}
+		</table>
+	{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block heading %}
+{{ team.name }}
+{% endblock %}
+{% block body %}
+<p>{{ team.location }}</p>
+{% if finishedGames %}
+<h2>Zgodovina tekem</h2>
+<table class="padding-3">
+	{% for game in finishedGames %}
+	<tr>
+		<td>{{ game.scheduled|date('d.m.Y')}}</td>
+		<td>{{ game.round }}. krog</td>
+		<td class="align-right padding-3">{{ game.homeTeam.name }}</td>
+		<td><strong>{{ game.scoreHome }}</strong></td>
+		<td>:</td>
+		<td><strong>{{ game.scoreAway }}</strong></td>
+		<td class="align-left padding-3">{{ game.awayTeam.name }}</td>
+		<td><small><a href="{{ game.recap }}" title="Več o tekmi {{game.homeTeam.name}}-{{game.awayTeam.name}}">več..</a></small></td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+	Trenutno še ni rezultatov.
+{% endif %}	
+
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}

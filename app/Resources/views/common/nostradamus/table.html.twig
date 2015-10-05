@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block heading %}
+Lestvica
+{% endblock %}
+{% block body %}
+{% if nostradamuses %}
+<table class="padding-5">
+	<tr>
+		<th>Nostradamus</th>
+		<th>Točke</th>
+	</tr>
+	{% for nostradamus in nostradamuses %}
+	<tr>
+		<td>{{nostradamus.user.username}}</td>
+		<td>{{nostradamus.score}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+	Trenutno še ni rezultatov.
+{% endif %}	
+
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}
+
+{% block footerWidgets %}
+	{{ include('views/SubTemplates/footer-widgets.html.twig') }}
+{% endblock %}

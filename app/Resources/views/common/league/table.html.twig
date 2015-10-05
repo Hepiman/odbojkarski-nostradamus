@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block heading %}
+Lestvica
+{% endblock %}
+{% block body %}
+{% if teams %}
+<table class="padding-3">
+	<tr>
+		<th>Ekipa</th>
+		<th>Zmage</th>
+		<th>Porazi</th>
+		<th>Točke</th>
+	</tr>
+	{% for team in teams %}
+	<tr>
+		<td>{{team.name}}</td>
+		<td>{{team.wins}}</td>
+		<td>{{team.losses}}</td>
+		<td>{{team.points}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+	Trenutno še ni rezultatov.
+{% endif %}	
+
+{% endblock %}
+
+{% block sidebar %}
+
+	Stranski meni tukaj. 
+{% endblock %}
